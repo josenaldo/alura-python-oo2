@@ -7,8 +7,10 @@ data_atual = date.today()
 print(data_atual)
 
 # Formatando datas em strings usando o método strftime()
+# https://man7.org/linux/man-pages/man3/strftime.3.html
 data_em_texto = data_atual.strftime('%d/%m/%Y')
 print(data_em_texto)
+
 
 ################################################################################
 # Convertendo de datetime para string
@@ -23,6 +25,7 @@ print(data_e_hora_em_texto)
 data_e_hora_em_texto = data_e_hora_atuais.strftime('%d/%m/%Y %H:%M')
 print(data_e_hora_em_texto)
 
+
 ################################################################################
 # Convertendo de string para datetime
 from datetime import datetime
@@ -30,6 +33,7 @@ from datetime import datetime
 data_e_hora_em_texto = '01/03/2018 12:30'
 data_e_hora = datetime.strptime(data_e_hora_em_texto, '%d/%m/%Y %H:%M')
 print(data_e_hora)
+
 
 ################################################################################
 # Lidando com fuso horário
@@ -53,3 +57,22 @@ data_e_hora_sao_paulo = data_e_hora_atuais.astimezone(fuso_horario)
 data_e_hora_sao_paulo_em_texto = data_e_hora_sao_paulo.strftime('%d/%m/%Y %H:%M')
 
 print(data_e_hora_sao_paulo_em_texto)
+
+
+################################################################################
+# Resolvendo o problema dos fusos horários com o pytz
+from datetime import datetime
+from pytz import timezone
+
+data_e_hora_atuais = datetime.now()
+fuso_horario = timezone('America/Sao_Paulo')
+data_e_hora_sao_paulo = data_e_hora_atuais.astimezone(fuso_horario)
+data_e_hora_sao_paulo_em_texto = data_e_hora_sao_paulo.strftime('%d/%m/%Y %H:%M')
+
+print(data_e_hora_sao_paulo_em_texto)
+
+# Listando todas as timezones
+import pytz
+
+for tz in pytz.all_timezones:
+    print(tz)
