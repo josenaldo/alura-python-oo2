@@ -85,4 +85,4 @@ minha_playlist = Playlist('fim de semana', listinha)
 for programa in minha_playlist.listagem:
     print(programa)
 
-print(f'Tamanho: {len(minha_playlist.listagem)}')COP
+print(f'Tamanho: {len(minha_playlist.listagem)}')
